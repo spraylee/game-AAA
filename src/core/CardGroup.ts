@@ -135,7 +135,7 @@ export class CardGroup {
       return this.levelValue > target.levelValue
     }
   }
-  ifCardGroupEqualTo(target: CardGroup) {
+  isCardGroupEqualTo(target: CardGroup) {
     return this.level === target.level && this.levelValue === target.levelValue
   }
 }

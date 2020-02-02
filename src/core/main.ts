@@ -3,9 +3,9 @@ import { Card } from './Card'
 import { AllCards } from './AllCards'
 
 const cardGroup0 = new CardGroup(
-  new Card('black', 'A'),
-  new Card('red', 'A'),
-  new Card('square', 'Q'),
+  new Card('black', '2'),
+  new Card('black', '3'),
+  new Card('black', '5'),
 )
 
 const allCards = new AllCards()
