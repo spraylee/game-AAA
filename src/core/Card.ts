@@ -50,6 +50,11 @@ export class Card {
    * 牌面数值
    */
   value: CardValue
+  /**
+   * 通过花色的数字生成一张牌
+   * @param type 花色
+   * @param value 数字
+   */
   constructor(type: CardType, value: CardValue) {
     this.type = type
     this.value = value

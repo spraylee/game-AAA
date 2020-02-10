@@ -28,6 +28,9 @@ export class CardGroup {
       }
     })
   }
+  /**
+   * 计算牌组等级，以及在该等级中的大小值（相同等级时，levelValue才有比较价值）
+   */
   countCardGroupLevelAndLevelValue(): { level: number; levelValue: number } {
     if (this.isAllSameValue()) {
       return { level: 6, levelValue: this.list[0].getValueNumber() }
@@ -71,12 +74,18 @@ export class CardGroup {
       }
     }
   }
+  /**
+   * 是否是滚筒，例如：AAA
+   */
   isAllSameValue() {
     return (
       this.list[0].isValueEqualTo(this.list[1]) &&
       this.list[0].isValueEqualTo(this.list[2])
     )
   }
+  /**
+   * 是否为金花儿
+   */
   isAllSameType() {
     return (
       this.list[0].isTypeEqualTo(this.list[1]) &&
@@ -92,6 +101,9 @@ export class CardGroup {
       this.list[1].couldTheLastCardBe(this.list[2])
     )
   }
+  /**
+   * 是否为对子（滚筒算然也是对子，但是会优先判断为滚筒）
+   */
   getDoubleValue() {
     if (this.list[0].value === this.list[1].value) {
       return {
@@ -110,6 +122,9 @@ export class CardGroup {
       }
     }
   }
+  /**
+   * 是否为特殊牌（不是金花儿的235）
+   */
   isSpecial() {
     return (
       !this.isAllSameType() &&
@@ -118,6 +133,10 @@ export class CardGroup {
       this.list[2].value === '2'
     )
   }
+  /**
+   * 是否比待比较的牌组大
+   * @param target 待比较的牌组
+   */
   isBiggerThanCardGroup(target: CardGroup) {
     if (this.level === 6 && target.level === 0) {
       return false
@@ -135,6 +154,10 @@ export class CardGroup {
       return this.levelValue > target.levelValue
     }
   }
+  /**
+   * 是否和待比较的牌组一样大
+   * @param target 待比较的牌组
+   */
   isCardGroupEqualTo(target: CardGroup) {
     return this.level === target.level && this.levelValue === target.levelValue
   }
